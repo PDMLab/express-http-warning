@@ -37,11 +37,9 @@ describe('warn', () => {
       const res = await fetch('http://localhost:3000/')
       const body = await res.json()
       body.some.should.equal('content')
-      console.log(body)
-      console.log(res.headers)
+      body.warnings.length.should.equal(1)
     } finally {
       server.close()
-      // done()
     }
   })
 })

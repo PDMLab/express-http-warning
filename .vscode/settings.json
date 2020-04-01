@@ -1,10 +1,9 @@
 {
+  "mochaExplorer.files": "test/**/*.ts",
+  "mochaExplorer.require": "ts-node/register",
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "typescript"],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDragAndDrop": false,

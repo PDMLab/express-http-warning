@@ -16,7 +16,7 @@
     "build": "tsc",
     "prerelease": "yarn build",
     "release": "standard-version",
-    "test": "jest",
+    "test": "ts-mocha -p tsconfig.json test/**/*.ts",
     "lint-ts": "eslint --ext .ts ."
   },
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "express-http-warning",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Create warnings for HTTP responses in express following RFC draft-cedik-http-warning-01",
   "main": "dist/registerwarnings.js",
   "types": "dist/registerwarnings.d.ts",

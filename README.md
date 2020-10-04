@@ -4,6 +4,64 @@
 
 Create warnings for HTTP responses in express following RFC [draft-cedik-http-warning-01](https://tools.ietf.org/html/draft-cedik-http-warning-01)
 
+## Usage
+
+You can create warnings using the `.warn` function on the Response object like this:
+
+```typescript
+import express, { Request, Response } from 'express'
+import { ProblemDocument } from 'http-problem-details'
+import registerwarnings from 'express-http-warning/dist/registerwarnings'
+
+const app = express()
+app.use(registerwarnings())
+app.get('/', (_req: Request, res: Response) => {
+  return res
+    .status(200)
+    .warn([
+      new ProblemDocument({
+        detail: 'Street name was too long. It has been shortened...',
+        instance: 'https://example.com/shipments/3a186c51/msgs/c94d',
+        type: 'https://example.com/errors/shortened_entry'
+      })
+    ])
+    .send({ some: 'content' })
+})
+const server = app.listen(3000)
+process.on('SIGINT', () => {
+  server.close()
+})
+```
+
+When calling http://localhost:3000, your output should look like this:
+
+```bash
+$ http get http://localhost:3000/
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 209
+Content-Type: application/json; charset=utf-8
+Content-Warning: "embedded-warning"; 1601818734551
+Date: Sun, 04 Oct 2020 13:38:54 GMT
+ETag: W/"d1-CjE3r0SHoZBMEN5aorcGVXlp0ac"
+Keep-Alive: timeout=5
+X-Powered-By: Express
+
+{
+    "some": "content",
+    "warnings": [
+        {
+            "detail": "Street name was too long. It has been shortened...",
+            "instance": "https://example.com/shipments/3a186c51/msgs/c94d",
+            "type": "https://example.com/errors/shortened_entry"
+        }
+    ]
+}
+```
+
+As you can see, the `warnings` member has been added to the JSON body. Also the `Content-Warning` header has been added.
+
 ## Want to help?
 
 This project is just getting off the ground and could use some help with cleaning things up and refactoring.

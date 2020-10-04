@@ -11,7 +11,7 @@ You can create warnings using the `.warn` function on the Response object like t
 ```typescript
 import express, { Request, Response } from 'express'
 import { ProblemDocument } from 'http-problem-details'
-import registerwarnings from 'express-http-warning/dist/registerwarnings'
+import registerwarnings from 'express-http-warning/'
 
 const app = express()
 app.use(registerwarnings())
@@ -33,7 +33,7 @@ process.on('SIGINT', () => {
 })
 ```
 
-When calling http://localhost:3000, your output should look like this:
+When calling http://localhost:3000/, your output should look like this:
 
 ```bash
 $ http get http://localhost:3000/

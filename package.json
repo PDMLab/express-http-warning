@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "postbuild": "cat ./@types/express/index.d.ts >> ./dist/registerwarnings.d.ts",
     "prerelease": "yarn build",
     "release": "standard-version",
     "test": "ts-mocha -p tsconfig.json test/**/*.ts",

@@ -24,7 +24,19 @@
     "type": "git",
     "url": "git+https://github.com/PDMLab/express-http-warning.git"
   },
-  "keywords": [],
+  "keywords": [
+    "expressjs",
+    "express",
+    "hateoas",
+    "http",
+    "hypermedia",
+    "nodejs",
+    "node",
+    "rest-api",
+    "rfc",
+    "warning",
+    "warnings"
+  ],
   "author": "Alexander Zeitler <alexander.zeitler@pdmlab.com>",
   "license": "MIT",
   "bugs": {
